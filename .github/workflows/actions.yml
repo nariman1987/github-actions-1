@@ -1,16 +1,24 @@
 name: Actions WorkFlow
 on:
-  repository_dispatch:
-    types: [build] 
+  push:
+    branches:
+      - master
+      - 'feature/*'
+      - 'feature/**'
+      - '!feature/test'
+    tags:
+      - v1.*
+  # repository_dispatch:
+  #   types: [build] 
   # schedule:
   #   - cron: "0/10 * * * *"
   # push:
-  pull_request:
-    types:
-      - "closed"
-      - "assigned"
-      - "closed"
-      - "reopened"
+  # pull_request:
+  #   types:
+  #     - "closed"
+  #     - "assigned"
+  #     - "closed"
+  #     - "reopened"
 jobs:
   run-github-actions:
     runs-on: ubuntu-latest
